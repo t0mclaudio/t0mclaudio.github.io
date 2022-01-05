@@ -1,0 +1,33 @@
+name: deploy
+
+on:
+  push:
+    branches: [master]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        node-version: [16.x]
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v1
+
+      - name: Build
+        run: |
+          npm install
+          npm run build
+        env:
+          REACT_APP_CONTENTFUL_SPACE: ${{ secrets.REACT_APP_CONTENTFUL_SPACE }}
+          REACT_APP_CONTENTFUL_ACCESS_TOKEN: ${{ secrets.REACT_APP_CONTENTFUL_ACCESS_TOKEN }}
+          REACT_APP_SENTRY_DNS: ${{ secrets.REACT_APP_SENTRY_DSN }}
+
+      - name: Deploy
+        uses: JamesIves/github-pages-deploy-action@releases/v3
+        with:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          BRANCH: gh-pages
+          FOLDER: build
