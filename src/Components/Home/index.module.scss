@@ -1,0 +1,114 @@
+.wrapper {
+  margin: 0 auto;
+  font-size: 1.6rem;
+  background-color: rgba(53, 59, 72, 1);
+}
+
+header {
+  background-color: #2f3640;
+  height: 400px;
+  display: flex;
+  justify-content: flex-end;
+  margin-bottom: -50px;
+  div {
+    position: relative;
+    max-width: 800px;
+    margin: 0 auto;
+  }
+  blockquote {
+    font-size: 3.8rem;
+    padding: 2em 0;
+    margin: 0;
+    text-align: right;
+    p {
+      color: rgba(245, 246, 250, 0.7);
+      line-height: 4.2rem;
+      margin-bottom: 1em;
+      &:first-child {
+        font-size: 4.8rem;
+      }
+    }
+    i {
+      color: #d35400;
+    }
+    b {
+      color: rgba(245, 246, 250, 0.8);
+    }
+  }
+}
+
+picture {
+  float: right;
+  height: 400px;
+  clip-path: polygon(170px 0, 100% 0, 95% 100%, 70px 100%);
+  shape-outside: polygon(170px 0, 100% 0, 100% 100%, 70px 100%);
+  margin-left: 2em;
+  .image {
+    height: 100%;
+    opacity: 0.9;
+  }
+}
+
+.about {
+  background-color: rgba(241, 196, 15, 1);
+  text-align: justify;
+  clip-path: polygon(0 0, 100% 5%, 100% 90%, 0 100%);
+  margin-bottom: -80px;
+  padding-top: 5em;
+  p {
+    font-size: 2.4rem;
+    line-height: 2.8rem;
+    margin-bottom: 1em;
+  }
+  h2 {
+    text-align: center;
+    color: rgba(245, 246, 250, 0.7);
+    padding: 0.5em;
+    background-color: black;
+    max-width: 200px;
+    clip-path: polygon(0 0, 100% 5px, 100% 100%, 5px 100%);
+    transform: rotate(2deg);
+    margin: 0 auto;
+  }
+}
+
+article {
+  padding: 2em 0;
+}
+
+section {
+  max-width: 800px;
+  padding: 1.6em;
+  margin: 0 auto;
+}
+
+.careerTrajectory {
+  padding-top: 100px;
+  color: rgba(245, 246, 250, 0.9);
+  background-color: rgba(243, 156, 18, 1);
+  clip-path: polygon(0 5%, 100% 0, 100% 97%, 0 100%);
+  h2 {
+    text-align: center;
+    color: rgba(245, 246, 250, 0.7);
+    padding: 0.5em;
+    background-color: black;
+    max-width: 300px;
+    clip-path: polygon(5px 0, 95% 5px, 95% 100%, 5px 95%);
+    transform: rotate(-2deg);
+    margin: 0 auto;
+  }
+  section {
+    text-align: center;
+    &:before {
+      content: "🔼";
+    }
+  }
+}
+
+footer {
+  padding: 3em;
+  text-align: center;
+  color: rgba(245, 246, 250, 0.9);
+  font-size: 2.4rem;
+  clip-path: polygon(10px 0, 95% 5px, 95% 100%, 5px 90%);
+}
