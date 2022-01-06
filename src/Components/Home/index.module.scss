@@ -14,38 +14,59 @@ header {
     position: relative;
     max-width: 800px;
     margin: 0 auto;
-  }
-  blockquote {
-    font-size: 3.8rem;
-    padding: 2em 0;
-    margin: 0;
-    text-align: right;
-    p {
-      color: rgba(245, 246, 250, 0.7);
-      line-height: 4.2rem;
-      margin-bottom: 1em;
-      &:first-child {
-        font-size: 4.8rem;
+    blockquote {
+      font-size: 3.8rem;
+      padding: 2em 0;
+      margin: 0;
+      text-align: right;
+      opacity: 0;
+      animation: build1 250ms ease-in-out;
+      animation-fill-mode: forwards;
+      @keyframes build1 {
+        from {
+          transform: translatex(-75px);
+          opacity: 0;
+        }
+        to {
+          opacity: 100;
+        }
+      }
+      p {
+        color: rgba(245, 246, 250, 0.7);
+        line-height: 4.2rem;
+        margin-bottom: 1em;
+        &:first-child {
+          font-size: 4.8rem;
+        }
+      }
+      i {
+        color: #d35400;
+      }
+      b {
+        color: rgba(245, 246, 250, 0.8);
       }
     }
-    i {
-      color: #d35400;
-    }
-    b {
-      color: rgba(245, 246, 250, 0.8);
-    }
   }
-}
-
-picture {
-  float: right;
-  height: 400px;
-  clip-path: polygon(170px 0, 100% 0, 95% 100%, 70px 100%);
-  shape-outside: polygon(170px 0, 100% 0, 100% 100%, 70px 100%);
-  margin-left: 2em;
-  .image {
-    height: 100%;
-    opacity: 0.9;
+  picture {
+    float: right;
+    height: 400px;
+    clip-path: polygon(170px 0, 100% 0, 95% 100%, 70px 100%);
+    shape-outside: polygon(170px 0, 100% 0, 100% 100%, 70px 100%);
+    margin-left: 2em;
+    animation: build 250ms ease-in-out;
+    @keyframes build {
+      from {
+        transform: translatex(75px);
+        opacity: 0;
+      }
+      to {
+        opacity: 100;
+      }
+    }
+    .image {
+      height: 100%;
+      opacity: 0.9;
+    }
   }
 }
 
@@ -55,12 +76,8 @@ picture {
   clip-path: polygon(0 0, 100% 5%, 100% 90%, 0 100%);
   margin-bottom: -80px;
   padding-top: 5em;
-  p {
-    font-size: 2.4rem;
-    line-height: 2.8rem;
-    margin-bottom: 1em;
-  }
   h2 {
+    font-size: 3.4rem;
     text-align: center;
     color: rgba(245, 246, 250, 0.7);
     padding: 0.5em;
@@ -69,6 +86,33 @@ picture {
     clip-path: polygon(0 0, 100% 5px, 100% 100%, 5px 100%);
     transform: rotate(2deg);
     margin: 0 auto;
+    animation: build1 350ms ease-in-out;
+    @keyframes build1 {
+      from {
+        transform: scale(0.5);
+        opacity: 0;
+      }
+      to {
+        opacity: 100;
+      }
+    }
+  }
+  p {
+    font-size: 2.4rem;
+    line-height: 2.8rem;
+    margin-bottom: 1em;
+    opacity: 0;
+    animation: build2 450ms 450ms ease-in-out;
+    animation-fill-mode: forwards;
+    @keyframes build2 {
+      from {
+        transform: translateY(-100px);
+        opacity: 0;
+      }
+      to {
+        opacity: 100;
+      }
+    }
   }
 }
 
