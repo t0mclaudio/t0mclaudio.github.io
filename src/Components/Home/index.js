@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { documentToReactComponents } from "@contentful/rich-text-react-renderer";
-import { client } from "../../api";
+import { getHomePageContent } from "../../api";
 
 import styles from "./index.module.scss";
 import { Link } from "react-router-dom";
@@ -9,8 +9,8 @@ function Home(props) {
   const [state, setState] = useState(null);
   useEffect(() => {
     const getContents = async () => {
-      const response = await client.getEntry("2gX6ORqrDTgvePdxvgxRwL");
-      setState(response.fields);
+      const response = await getHomePageContent();
+      setState(response);
     };
     getContents();
   }, []);
