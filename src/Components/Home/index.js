@@ -1,9 +1,10 @@
 import { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 import { documentToReactComponents } from "@contentful/rich-text-react-renderer";
+import { InView } from "react-intersection-observer";
 import { getHomePageContent } from "../../api";
 
 import styles from "./index.module.scss";
-import { Link } from "react-router-dom";
 
 function Home(props) {
   const [state, setState] = useState(null);
@@ -56,19 +57,37 @@ function Home(props) {
           <h2>About me</h2>
           <section>{documentToReactComponents(state.longDescription)}</section>
         </article>
-        <article id="career-trajectory" className={styles.careerTrajectory}>
-          <h2>My career trajectory</h2>
-          {[...state.careerTrajectory].reverse().map((item, index) => {
-            return (
-              <section key={index}>
-                <h3>{item.title}</h3>
-                <p>{item.description}</p>
-              </section>
-            );
-          })}
-        </article>
+        <InView>
+          {({ inView, ref }) => (
+            <article
+              id="career-trajectory"
+              ref={ref}
+              className={`${styles.careerTrajectory} ${
+                inView ? styles.careerTrajectoryInView : ""
+              }`}
+            >
+              <h2>My career trajectory</h2>
+              {[...state.careerTrajectory].reverse().map((item, index) => {
+                return (
+                  <section key={index}>
+                    <h3>{item.title}</h3>
+                    <p>{item.description}</p>
+                  </section>
+                );
+              })}
+            </article>
+          )}
+        </InView>
       </main>
-      <footer>This site is handcrafted and WIP just like me.</footer>
+      <footer>
+        <InView>
+          {({ inView, ref }) => (
+            <p ref={ref} className={`${inView ? styles.show : ""}`}>
+              This site is handcrafted and WIP just like me.
+            </p>
+          )}
+        </InView>
+      </footer>
     </div>
   );
 }

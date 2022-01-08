@@ -171,6 +171,7 @@ section {
   background-color: rgba(243, 156, 18, 1);
   clip-path: polygon(0 5%, 100% 0, 100% 97%, 0 100%);
   h2 {
+    opacity: 0;
     text-align: center;
     color: rgba(245, 246, 250, 0.7);
     padding: 0.5em;
@@ -181,9 +182,27 @@ section {
     margin: 0 auto;
   }
   section {
+    opacity: 0;
     text-align: center;
     &:before {
       content: "🔼";
+    }
+  }
+}
+
+.careerTrajectoryInView {
+  h2,
+  section {
+    animation: show 250ms 300ms ease-in-out forwards;
+    @keyframes show {
+      from {
+        transform: scale(0.5);
+        opacity: 0;
+      }
+      to {
+        transform: scale(1);
+        opacity: 100;
+      }
     }
   }
 }
@@ -194,4 +213,21 @@ footer {
   color: rgba(245, 246, 250, 0.9);
   font-size: 2.4rem;
   clip-path: polygon(10px 0, 95% 5px, 95% 100%, 5px 90%);
+  p {
+    overflow: hidden;
+  }
+  p.show {
+    animation: typing 3000ms steps(100, end);
+    letter-spacing: 0.05em;
+    margin: 0 auto;
+    white-space: nowrap;
+    @keyframes typing {
+      from {
+        width: 0;
+      }
+      to {
+        width: 100%;
+      }
+    }
+  }
 }
