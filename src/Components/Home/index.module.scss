@@ -1,7 +1,6 @@
 .wrapper {
   margin: 0 auto;
   font-size: 1.6rem;
-  background-color: rgba(53, 59, 72, 1);
 }
 
 header {
@@ -9,7 +8,7 @@ header {
   height: 400px;
   display: flex;
   justify-content: flex-end;
-  margin-bottom: -50px;
+  margin-bottom: -1em;
   div {
     position: relative;
     max-width: 800px;
@@ -73,18 +72,14 @@ header {
 .about {
   background-color: rgba(241, 196, 15, 1);
   text-align: justify;
-  clip-path: polygon(0 0, 100% 5%, 100% 90%, 0 100%);
-  margin-bottom: -80px;
-  padding-top: 5em;
+  clip-path: polygon(0 0, 100% 1em, 100% 100%, 0 100%);
+  margin-bottom: -1em;
   h2 {
-    font-size: 3.4rem;
+    font-size: 2.4rem;
     text-align: center;
-    color: rgba(245, 246, 250, 0.7);
     padding: 0.5em;
-    background-color: black;
     max-width: 200px;
-    clip-path: polygon(0 0, 100% 5px, 100% 100%, 5px 100%);
-    transform: rotate(2deg);
+    transform: rotate(0.5deg);
     margin: 0 auto;
     animation: build1 350ms ease-in-out;
     @keyframes build1 {
@@ -98,9 +93,9 @@ header {
     }
   }
   p {
-    transform: rotate(1deg);
-    font-size: 2.4rem;
-    line-height: 3rem;
+    transform: rotate(0.5deg);
+    font-size: 2.1rem;
+    line-height: 2.4rem;
     margin-bottom: 1em;
     opacity: 0;
     animation: build2 450ms 450ms ease-in-out;
@@ -115,13 +110,13 @@ header {
       }
     }
     b {
-      font-weight: 100;
+      font-weight: bolder;
+      color: rgba(0, 0, 0, 0.8);
       border-radius: 4px;
-      background-color: #353b48;
-      color: rgba(245, 246, 250, 0.85);
       padding: 0.05em 0.2em;
     }
     i {
+      color: rgba(0, 0, 0, 0.8);
       font-weight: bold;
       font-style: normal;
     }
@@ -139,26 +134,39 @@ section {
 }
 
 .careerTrajectory {
-  padding-top: 100px;
-  color: rgba(245, 246, 250, 0.9);
+  color: #2f3640;
   background-color: rgba(243, 156, 18, 1);
-  clip-path: polygon(0 5%, 100% 0, 100% 97%, 0 100%);
+  clip-path: polygon(0 1em, 100% 0, 100% 100%, 0 100%);
   h2 {
+    width: 290px;
     opacity: 0;
-    text-align: center;
-    color: rgba(245, 246, 250, 0.7);
-    padding: 0.5em;
-    background-color: black;
-    max-width: 300px;
-    clip-path: polygon(5px 0, 95% 5px, 95% 100%, 5px 95%);
-    transform: rotate(-2deg);
+    padding: 0.8em 0 1.4em 0;
+    transform: rotate(-1deg);
     margin: 0 auto;
   }
   section {
+    width: 260px;
+    padding: 0;
     opacity: 0;
-    text-align: center;
-    &:before {
-      content: "🔼";
+    h3 {
+      display: flex;
+      align-items: center;
+      gap: 0.5em;
+      margin-left: -7px;
+      padding: 0.2em 0;
+    }
+    &::after {
+      content: "";
+      display: block;
+      height: 60px;
+      border-left: 5px dotted #2f3640;
+    }
+
+    &:last-child {
+      &::after {
+        border-left: none;
+        height: 0;
+      }
     }
   }
 }
@@ -181,11 +189,11 @@ section {
 }
 
 footer {
-  padding: 3em;
+  padding: 1em;
   text-align: center;
-  color: rgba(245, 246, 250, 0.9);
-  font-size: 2.4rem;
-  clip-path: polygon(10px 0, 95% 5px, 95% 100%, 5px 90%);
+  color: black;
+  font-size: 1.6rem;
+  clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
   p {
     overflow: hidden;
   }

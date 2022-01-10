@@ -3,6 +3,7 @@ import { documentToReactComponents } from "@contentful/rich-text-react-renderer"
 import { InView } from "react-intersection-observer";
 import { getHomePageContent } from "../../api";
 import Nav from "../Nav";
+import { FaBullseye } from "react-icons/fa";
 
 import styles from "./index.module.scss";
 
@@ -60,7 +61,9 @@ function Home(props) {
               {[...state.careerTrajectory].reverse().map((item, index) => {
                 return (
                   <section key={index}>
-                    <h3>{item.title}</h3>
+                    <h3>
+                      <FaBullseye /> {item.title}
+                    </h3>
                     <p>{item.description}</p>
                   </section>
                 );
