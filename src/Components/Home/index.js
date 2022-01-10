@@ -8,11 +8,13 @@ import styles from "./index.module.scss";
 
 function Home(props) {
   const [state, setState] = useState(null);
+
+  const getContents = async () => {
+    const response = await getHomePageContent();
+    setState(response);
+  };
+
   useEffect(() => {
-    const getContents = async () => {
-      const response = await getHomePageContent();
-      setState(response);
-    };
     getContents();
   }, []);
 
