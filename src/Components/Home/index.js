@@ -1,8 +1,8 @@
 import { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
 import { documentToReactComponents } from "@contentful/rich-text-react-renderer";
 import { InView } from "react-intersection-observer";
 import { getHomePageContent } from "../../api";
+import Nav from "../Nav";
 
 import styles from "./index.module.scss";
 
@@ -24,19 +24,7 @@ function Home(props) {
 
   return (
     <div className={styles.wrapper}>
-      <nav>
-        <ul>
-          <li>
-            <Link to={"/"}>Home</Link>
-          </li>
-          <li>
-            <Link to={"/blogs"}>Blogs</Link>
-          </li>
-          <li>
-            <Link to={"/works"}>Works</Link>
-          </li>
-        </ul>
-      </nav>
+      <Nav />
       <header>
         {/* Optimised later for performance */}
         <div>

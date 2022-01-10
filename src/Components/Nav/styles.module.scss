@@ -1,0 +1,26 @@
+.nav {
+  background-color: white;
+  margin: 0;
+  ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    font-weight: bolder;
+    display: flex;
+    gap: 1.2em;
+    align-items: flex-end;
+    justify-content: flex-end;
+    margin-right: 2em;
+    a {
+      padding: 1em;
+      display: block;
+      text-decoration: none;
+      color: #2d3436;
+    }
+    a:hover {
+      color: orangered;
+      background-color: rgba(246, 229, 141, 0.5);
+      transition: color 250ms, background-color 300ms;
+    }
+  }
+}
