@@ -1,70 +1,36 @@
-# Getting Started with Create React App
+# My personal/professional website
+The site contains the following information
+- About me
+- Professional information
+- Professional timeline (career projection)
+- Blogs / Vlogs
+- Reflections
+- Guides
+- How tos
+- Featured contents
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Functional requirements
+- Should be able to display content curated in a chosen CMS
+- Design should be simple / clean / organised
 
-## Available Scripts
+**TODO**
+- Content strategy / structure in the page
+- Research for way to convert from CSR to SSR to lessen queries to CMS and lessen cost
 
-In the project directory, you can run:
+## Non functional requirements
+- Accessible
+- Content don't need to be fresh / delays should be ok
+- Speed is not really priority
+- No server / github pages for deployments
+- Client side rendering
+- Photos stored on CMS
+- CMS is vendor
+- Does not need to be deployed on edges
 
-### `npm start`
-
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
-
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
-
-### `npm test`
-
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+## Data estimation
+- 2 new contents per week where each content is at 100kb
+- a content can have about average of 2 photos optimised for web where each photo is about 300kb each
+- (2 x 100kb) x 52 weeks = 10.4mb x 5 years = 52mb for 5 years
+- (4 per week x 300kb) = 62.4mb * 5 years = 312mb for 5 years
+- Allotment of 10mb for static content (photos and text) for years
+- 374mb for 5 years for content
