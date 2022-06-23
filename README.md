@@ -38,13 +38,6 @@ _sections(about, timeline) in the home page are to encourage (action point!) to 
 - CMS is vendor
 - Does not need to be deployed on edges
 
-**TODO**
-- Content strategy / structure in the page
-- Research for way to convert from CSR to SSR to minimize queries to CMS and lessen cost
-
-## Architecture
-![IMG_0163](https://user-images.githubusercontent.com/11550373/175406995-df53a8d9-24f1-444c-8160-2dffc96b4979.jpg)
-
 ### Data estimation
 - 2 new contents per week where each content is at 100kb
 - a content can have about average of 2 photos optimised for web where each photo is about 300kb each
@@ -52,3 +45,19 @@ _sections(about, timeline) in the home page are to encourage (action point!) to 
 - (4 per week x 300kb) = 62.4mb * 5 years = 312mb for 5 years
 - Allotment of 10mb for static content (photos and text) for years
 - 374mb for 5 years for content
+
+**TODO**
+- Content strategy / structure in the page
+- Research for way to convert from CSR to SSR to minimize queries to CMS and lessen cost
+
+## Architecture
+![IMG_0163](https://user-images.githubusercontent.com/11550373/175406995-df53a8d9-24f1-444c-8160-2dffc96b4979.jpg)
+
+## Data Model
+- Maybe static generation for static pages?
+- Dynamic data will be supplied through fetching
+
+## API Design
+- There will be a CMS to supply data through a SDK
+
+## UX, Performance, Accessabiltity, internationilization
