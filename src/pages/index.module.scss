@@ -1,0 +1,214 @@
+.wrapper {
+  margin: 0 auto;
+  font-size: 1.6rem;
+}
+
+.header {
+  background-color: #2f3640;
+  height: 400px;
+  display: flex;
+  justify-content: flex-end;
+  margin-bottom: -1em;
+  div {
+    position: relative;
+    max-width: 800px;
+    margin: 0 auto;
+    blockquote {
+      font-size: 3.8rem;
+      padding: 2em 0;
+      margin: 0;
+      text-align: right;
+      opacity: 0;
+      animation: build1 250ms ease-in-out;
+      animation-fill-mode: forwards;
+      @keyframes build1 {
+        from {
+          transform: translatex(-75px);
+          opacity: 0;
+        }
+        to {
+          opacity: 100;
+        }
+      }
+      p {
+        color: rgba(245, 246, 250, 0.7);
+        line-height: 4.2rem;
+        margin-bottom: 1em;
+        &:first-child {
+          font-size: 4.8rem;
+        }
+      }
+      i {
+        color: #d35400;
+      }
+      b {
+        color: rgba(245, 246, 250, 0.8);
+      }
+    }
+  }
+  picture {
+    float: right;
+    height: 400px;
+    clip-path: polygon(170px 0, 100% 0, 95% 100%, 70px 100%);
+    shape-outside: polygon(170px 0, 100% 0, 100% 100%, 70px 100%);
+    margin-left: 2em;
+    animation: build 250ms ease-in-out;
+    @keyframes build {
+      from {
+        transform: translatex(75px);
+        opacity: 0;
+      }
+      to {
+        opacity: 100;
+      }
+    }
+    .image {
+      height: 100%;
+      opacity: 0.9;
+    }
+  }
+}
+
+.about {
+  background-color: rgba(241, 196, 15, 1);
+  text-align: justify;
+  clip-path: polygon(0 0, 100% 1em, 100% 100%, 0 100%);
+  margin-bottom: -1em;
+  h2 {
+    font-size: 2.4rem;
+    text-align: center;
+    padding: 0.5em;
+    max-width: 200px;
+    transform: rotate(0.5deg);
+    margin: 0 auto;
+    animation: build1 350ms ease-in-out;
+    @keyframes build1 {
+      from {
+        transform: scale(0.5);
+        opacity: 0;
+      }
+      to {
+        opacity: 100;
+      }
+    }
+  }
+  p {
+    transform: rotate(0.5deg);
+    font-size: 2.1rem;
+    line-height: 2.4rem;
+    margin-bottom: 1em;
+    opacity: 0;
+    animation: build2 450ms 450ms ease-in-out;
+    animation-fill-mode: forwards;
+    @keyframes build2 {
+      from {
+        transform: translateY(-100px);
+        opacity: 0;
+      }
+      to {
+        opacity: 100;
+      }
+    }
+    b {
+      font-weight: bolder;
+      color: rgba(0, 0, 0, 0.8);
+      border-radius: 4px;
+      padding: 0.05em 0.2em;
+    }
+    i {
+      color: rgba(0, 0, 0, 0.8);
+      font-weight: bold;
+      font-style: normal;
+    }
+  }
+}
+
+.article {
+  padding: 2em 0;
+}
+
+.section {
+  max-width: 800px;
+  padding: 1.6em;
+  margin: 0 auto;
+}
+
+.careerTrajectory {
+  color: #2f3640;
+  background-color: rgba(243, 156, 18, 1);
+  clip-path: polygon(0 1em, 100% 0, 100% 100%, 0 100%);
+  h2 {
+    width: 290px;
+    opacity: 0;
+    padding: 0.8em 0 1.4em 0;
+    transform: rotate(-1deg);
+    margin: 0 auto;
+  }
+  section {
+    width: 260px;
+    padding: 0;
+    opacity: 0;
+    h3 {
+      display: flex;
+      align-items: center;
+      gap: 0.5em;
+      margin-left: -7px;
+      padding: 0.2em 0;
+    }
+    &::after {
+      content: "";
+      display: block;
+      height: 60px;
+      border-left: 5px dotted #2f3640;
+    }
+
+    &:last-child {
+      &::after {
+        border-left: none;
+        height: 0;
+      }
+    }
+  }
+}
+
+.careerTrajectoryInView {
+  h2,
+  section {
+    animation: show 250ms 300ms ease-in-out forwards;
+    @keyframes show {
+      from {
+        transform: scale(0.5);
+        opacity: 0;
+      }
+      to {
+        transform: scale(1);
+        opacity: 100;
+      }
+    }
+  }
+}
+
+.footer {
+  padding: 1em;
+  text-align: center;
+  color: black;
+  font-size: 1.6rem;
+  clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+  p {
+    overflow: hidden;
+  }
+  p.show {
+    animation: typing 3000ms steps(100, end);
+    letter-spacing: 0.05em;
+    margin: 0 auto;
+    white-space: nowrap;
+    @keyframes typing {
+      from {
+        width: 0;
+      }
+      to {
+        width: 100%;
+      }
+    }
+  }
+}
