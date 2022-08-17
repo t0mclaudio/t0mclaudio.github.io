@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import { documentToReactComponents } from "@contentful/rich-text-react-renderer";
 import { InView } from "react-intersection-observer";
 import { getHomePageContent } from "../../api";
-import Nav from "../Nav";
+// import Nav from "../Nav";
 import { FaBullseye } from "react-icons/fa";
 
 import styles from "./index.module.scss";
@@ -25,7 +25,7 @@ function Home(props) {
 
   return (
     <div className={styles.wrapper}>
-      <Nav />
+      {/* <Nav /> */}
       <header>
         {/* Optimised later for performance */}
         <div>
