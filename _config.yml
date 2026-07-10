@@ -1,0 +1,51 @@
+locale: "en-US"
+title: "Tom Claudio"
+name: "Tom Claudio"
+description: "Personal website and portfolio of Tom Claudio, a frontend engineer."
+url: "https://t0mclaudio.github.io"
+baseurl: ""
+repository: "t0mclaudio/t0mclaudio.github.io"
+
+remote_theme: "mmistakes/minimal-mistakes@4.28.0"
+minimal_mistakes_skin: "default"
+
+plugins:
+  - jekyll-remote-theme
+  - jekyll-feed
+  - jekyll-sitemap
+  - jekyll-seo-tag
+  - jekyll-include-cache
+
+# TODO: fill in avatar, bio, email, and social links (see _data/career_trajectory.yml
+# and index.md for other placeholder content that still needs to be replaced).
+author:
+  name: "Tom Claudio"
+  avatar: "/assets/images/bio-photo.jpg"
+  bio: "TODO: one or two line bio."
+  links:
+    - label: "GitHub"
+      icon: "fab fa-fw fa-github"
+      url: "https://github.com/t0mclaudio"
+    - label: "Email"
+      icon: "fas fa-fw fa-envelope-square"
+      url: "mailto:TODO@example.com"
+
+defaults:
+  - scope:
+      path: ""
+      type: pages
+    values:
+      layout: single
+      author_profile: true
+      read_time: false
+      comments: false
+      share: false
+      related: false
+
+collections:
+  pages:
+    output: true
+    permalink: /:path/
+
+exclude:
+  - README.md

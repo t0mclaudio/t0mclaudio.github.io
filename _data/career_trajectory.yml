@@ -1,0 +1,8 @@
+# TODO: replace with the real career trajectory entries, pre-sorted in the
+# order they should display (most recent first, most likely). This was
+# previously stored in Contentful and reversed at render time in React;
+# store it here already in final display order.
+- title: "TODO: milestone title"
+  description: "TODO: milestone description"
+- title: "TODO: milestone title"
+  description: "TODO: milestone description"
