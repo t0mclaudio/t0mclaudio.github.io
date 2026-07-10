@@ -1,8 +1,8 @@
-# TODO: replace with the real career trajectory entries, pre-sorted in the
-# order they should display (most recent first, most likely). This was
-# previously stored in Contentful and reversed at render time in React;
-# store it here already in final display order.
-- title: "TODO: milestone title"
-  description: "TODO: milestone description"
-- title: "TODO: milestone title"
-  description: "TODO: milestone description"
+- title: "AI Engineering (2024–Present)"
+  description: "Learning LLMs, RAG pipelines, and agents. Building Etours Labs normalization engine as a live project."
+- title: "Scentre Group / Westfield (2020–2023)"
+  description: "Built marketplace features for 350k+ SKUs across 300 merchants. Shipped click-and-collect generating $133k AUD during Covid."
+- title: "Technical Co-founder — Etours (2009–Present)"
+  description: "Built and iterated booking platforms, pricing engines, and e-commerce systems from scratch over 10+ years."
+- title: "AIM Masters in Entrepreneurship (2024–2026)"
+  description: "Graduate of the Asian Institute of Management. Strategy, financial forecasting, and business model innovation."

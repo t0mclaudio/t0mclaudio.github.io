@@ -9,6 +9,16 @@ repository: "t0mclaudio/t0mclaudio.github.io"
 remote_theme: "mmistakes/minimal-mistakes@4.28.0"
 minimal_mistakes_skin: "default"
 
+# Silences Sass deprecation warnings that originate in the vendored theme's
+# own stylesheets (old @import/division/color-function syntax); warnings
+# from Sass we author ourselves would still be shown. quiet_deps covers
+# everything the theme pulls in via @import; silence_deprecations covers the
+# theme's own entry-point file (main.scss), which Dart Sass always treats as
+# "our" code rather than a dependency even though it lives in the theme.
+sass:
+  quiet_deps: true
+  silence_deprecations: ["import"]
+
 plugins:
   - jekyll-remote-theme
   - jekyll-feed
@@ -20,8 +30,8 @@ plugins:
 # and index.md for other placeholder content that still needs to be replaced).
 author:
   name: "Tom Claudio"
-  avatar: "/assets/images/bio-photo.jpg"
-  bio: "TODO: one or two line bio."
+  avatar: "/assets/images/tom_placeholder_photo.jpg"
+  bio: "Technical co-founder and AI developer. 16 years shipping real products. AIM Masters in Entrepreneurship. Open for short contracts."
   links:
     - label: "GitHub"
       icon: "fab fa-fw fa-github"

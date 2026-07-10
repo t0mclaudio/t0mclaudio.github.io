@@ -7,8 +7,8 @@ My professional website, built with [Jekyll](https://jekyllrb.com/) using the
 ## Local development
 
 ```sh
-bundle install
-bundle exec jekyll serve --livereload
+make install
+make run
 ```
 
 Visit `http://localhost:4000`.
