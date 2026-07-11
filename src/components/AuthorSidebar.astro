@@ -1,0 +1,16 @@
+---
+import { AUTHOR } from '../consts';
+---
+
+<aside class="author-sidebar">
+  <div class="author-sidebar__avatar">
+    <img src={AUTHOR.avatar} alt={AUTHOR.name} />
+  </div>
+  <p class="author-sidebar__name"><strong>{AUTHOR.name}</strong></p>
+  <p class="author-sidebar__bio">{AUTHOR.bio}</p>
+  <ul class="author-sidebar__links">
+    <li><a href={AUTHOR.github}>GitHub</a></li>
+    <li><a href={`mailto:${AUTHOR.email}`}>Email</a></li>
+    <li><a href={AUTHOR.linkedin}>LinkedIn</a></li>
+  </ul>
+</aside>

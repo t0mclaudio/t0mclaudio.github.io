@@ -1,0 +1,9 @@
+---
+import { NAV_LINKS } from '../consts';
+---
+
+<header class="site-header">
+  <nav class="site-nav">
+    {NAV_LINKS.map((link) => <a href={link.url}>{link.title}</a>)}
+  </nav>
+</header>
