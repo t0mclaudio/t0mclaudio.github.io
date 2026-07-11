@@ -1,0 +1,70 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import AuthorSidebar from '../components/AuthorSidebar.astro';
+import { AUTHOR } from '../consts';
+---
+
+<BaseLayout>
+  <div class="page-layout">
+    <main class="page-content">
+      <h2>Senior Developer. Technical Co-founder. AI Engineer.</h2>
+      <p>I build things that actually ship.</p>
+      <p>
+        16 years building web products at scale. Co-founded companies. Shipped at Westfield.
+        Just finished a Masters in Entrepreneurship at the Asian Institute of Management. Now
+        adding AI engineering to the stack — and taking on selective short contracts.
+      </p>
+
+      <h2>What I've Done</h2>
+      <ul>
+        <li>
+          <strong>$133k AUD</strong> — Revenue generated from the click-and-collect service I
+          helped ship at Westfield during Covid.
+        </li>
+        <li>
+          <strong>350k+ SKUs</strong> — Products live on the Westfield Direct marketplace I
+          helped build and launch.
+        </li>
+        <li>
+          <strong>$800k AUD/month</strong> — Processed through the Order Management System I
+          built features for.
+        </li>
+        <li>
+          <strong>3 companies co-founded</strong> — Etours, STMI Mediatech, Smitcore. Builder,
+          not just a developer.
+        </li>
+      </ul>
+
+      <h2>About Me</h2>
+      <p>
+        I'm a senior developer and technical co-founder from the Philippines. I've spent 16+
+        years shipping real products — e-commerce platforms, marketplace systems, booking
+        engines, automation tools — across Australia, New Zealand, and Southeast Asia.
+      </p>
+      <p>
+        I think like a founder because I am one. That means I don't just write code — I
+        understand the business problem behind it. When I work on your project, it gets my full
+        attention.
+      </p>
+      <p>
+        Right now I'm adding AI engineering to my stack — LLMs, document extraction, RAG
+        pipelines — on top of Python, Django, React, and TypeScript.
+      </p>
+      <p>
+        I take on a small number of short contracts at a time. If your timeline is tight and the
+        problem is real, we'll work well together.
+      </p>
+
+      <h2>Work With Me</h2>
+      <p>
+        AU timezone friendly. Short contracts, 1–4 weeks. Best fit: e-commerce features, API
+        integrations, automation, AI tooling.
+      </p>
+      <p>
+        <a href={`mailto:${AUTHOR.email}`}>Email me</a> · <a href={AUTHOR.linkedin}>LinkedIn</a> ·
+        <a href={AUTHOR.github}>GitHub</a>
+      </p>
+    </main>
+    <AuthorSidebar />
+  </div>
+</BaseLayout>
