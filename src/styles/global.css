@@ -1,20 +1,47 @@
 :root {
   color-scheme: light dark;
-  --color-text: #24292f;
-  --color-text-muted: #57606a;
-  --color-bg: #ffffff;
-  --color-border: #d0d7de;
-  --color-link: #0969da;
+
+  /* Backgrounds */
+  --color-bg: #FAFAFA;
+  --color-bg-subtle: #F1F3F4;
+
+  /* Text */
+  --color-text: #3C4043;
+  --color-text-muted: #5F6368;
+  --color-text-subtle: #9AA0A6;
+
+  /* Google color palette — used as accents only */
+  --color-blue: #4285F4;
+  --color-blue-hover: #1A73E8;
+  --color-red: #EA4335;
+  --color-yellow: #FBBC04;
+  --color-green: #34A853;
+
+  /* Links */
+  --color-link: #4285F4;
+  --color-link-hover: #1A73E8;
+
+  /* Borders */
+  --color-border: #DADCE0;
+
   --max-width: 960px;
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --color-text: #e6edf3;
-    --color-text-muted: #9198a1;
-    --color-bg: #0d1117;
-    --color-border: #30363d;
-    --color-link: #4493f8;
+    --color-bg: #202124;
+    --color-bg-subtle: #292A2D;
+    --color-text: #E8EAED;
+    --color-text-muted: #9AA0A6;
+    --color-text-subtle: #5F6368;
+    --color-blue: #8AB4F8;
+    --color-blue-hover: #AECBFA;
+    --color-red: #F28B82;
+    --color-yellow: #FDD663;
+    --color-green: #81C995;
+    --color-link: #8AB4F8;
+    --color-link-hover: #AECBFA;
+    --color-border: #3C4043;
   }
 }
 
@@ -24,14 +51,93 @@
 
 body {
   margin: 0;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  font-size: 1rem;
+  line-height: 1.7;
+  font-weight: 400;
   color: var(--color-text);
-  background: var(--color-bg);
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
-  line-height: 1.6;
+  background-color: var(--color-bg);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+h1 {
+  font-size: 2rem;
+  font-weight: 600;
+  line-height: 1.25;
+  letter-spacing: -0.02em;
+  color: var(--color-text);
+  margin-bottom: 0.5rem;
+}
+
+h2 {
+  font-size: 1.0625rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--color-text-muted);
+  margin-top: 2.5rem;
+  margin-bottom: 0.75rem;
+}
+
+h3 {
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--color-text);
+}
+
+p {
+  font-size: 1rem;
+  color: var(--color-text);
+  margin-bottom: 1rem;
+}
+
+.page-content > p:first-of-type {
+  font-size: 1.0625rem;
+  color: var(--color-text-muted);
+  margin-top: 0.25rem;
 }
 
 a {
   color: var(--color-link);
+  text-decoration: none;
+}
+
+a:hover {
+  color: var(--color-link-hover);
+  text-decoration: underline;
+}
+
+ul {
+  padding-left: 1.25rem;
+  margin-bottom: 1rem;
+}
+
+li {
+  font-size: 1rem;
+  line-height: 1.7;
+  color: var(--color-text);
+  margin-bottom: 0.5rem;
+}
+
+li strong {
+  font-weight: 600;
+}
+
+.metric-blue strong {
+  color: var(--color-blue);
+}
+
+.metric-red strong {
+  color: var(--color-red);
+}
+
+.metric-yellow strong {
+  color: var(--color-yellow);
+}
+
+.metric-green strong {
+  color: var(--color-green);
 }
 
 .site-header {
@@ -43,17 +149,23 @@ a {
   margin: 0 auto;
   padding: 1rem 1.5rem;
   display: flex;
+  justify-content: flex-end;
   gap: 1.5rem;
+  border-bottom: 1px solid var(--color-border);
+  background-color: var(--color-bg);
 }
 
 .site-nav a {
-  color: var(--color-text);
+  font-size: 0.9375rem;
+  font-weight: 500;
+  color: var(--color-text-muted);
+  letter-spacing: 0.01em;
   text-decoration: none;
-  font-weight: 600;
 }
 
 .site-nav a:hover {
-  color: var(--color-link);
+  color: var(--color-text);
+  text-decoration: none;
 }
 
 .page-layout {
@@ -73,6 +185,7 @@ a {
 .author-sidebar {
   flex: 0 0 220px;
   text-align: center;
+  background-color: transparent;
 }
 
 .author-sidebar__avatar img {
@@ -85,12 +198,15 @@ a {
 
 .author-sidebar__name {
   margin: 0.75rem 0 0.25rem;
-  font-size: 1.1rem;
+  font-size: 0.9375rem;
+  font-weight: 600;
+  color: var(--color-text);
 }
 
 .author-sidebar__bio {
   color: var(--color-text-muted);
-  font-size: 0.9rem;
+  font-size: 0.875rem;
+  line-height: 1.6;
 }
 
 .author-sidebar__links {
@@ -100,15 +216,26 @@ a {
   display: flex;
   flex-direction: column;
   gap: 0.4rem;
-  font-size: 0.9rem;
+  font-size: 0.875rem;
+}
+
+.author-sidebar__links a {
+  font-size: 0.875rem;
+  color: var(--color-link);
 }
 
 @media (max-width: 640px) {
   .page-layout {
-    flex-direction: column-reverse;
+    flex-direction: column;
   }
 
   .author-sidebar {
     flex: none;
+  }
+
+  .author-sidebar__links {
+    flex-direction: row;
+    justify-content: center;
+    gap: 1rem;
   }
 }
