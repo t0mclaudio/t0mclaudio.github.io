@@ -1,6 +1,6 @@
-export const SITE_TITLE = "Tom Claudio";
+export const SITE_TITLE = "Tom Claudio - Software & AI Engineer";
 export const SITE_DESCRIPTION =
-  "Personal website and portfolio of Tom Claudio, a frontend engineer.";
+  "Software Engineer, AI Engineer, and Technical Founder. 16 years shipping real products. Open for short contracts.";
 export const SITE_URL = "https://t0mclaudio.github.io";
 
 export const AUTHOR = {
