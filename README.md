@@ -25,6 +25,7 @@ dependency.
 
 ## Deployment
 
-Pushing to `master` triggers `.github/workflows/pages.yml`, which builds the
-site with Astro and deploys it via GitHub Pages (Actions-based deployment,
-configured in repo Settings → Pages → Source → "GitHub Actions").
+Run `npm run deploy` (or `make deploy`) to build the site and push the
+`dist/` output to the `gh-pages` branch, which GitHub Pages serves from
+directly (configured in repo Settings → Pages → Source → "Deploy from a
+branch" → `gh-pages` / `root`).

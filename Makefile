@@ -1,4 +1,4 @@
-.PHONY: install run build preview
+.PHONY: install run build preview deploy
 
 install:
 	npm install
@@ -11,3 +11,6 @@ build:
 
 preview:
 	npm run preview
+
+deploy:
+	npm run deploy
