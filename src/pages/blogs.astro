@@ -1,12 +1,37 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+import AuthorSidebar from '../components/AuthorSidebar.astro';
+import { getCollection } from 'astro:content';
+
+const posts = (await getCollection('blog')).sort(
+  (a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf()
+);
 ---
 
 <BaseLayout title="Blogs">
   <div class="page-layout">
+    <AuthorSidebar />
     <main class="page-content">
-      <h2>Blogs</h2>
-      <p>Work in progress. Check back soon!</p>
+      <h1>Blogs</h1>
+      <ul class="post-list">
+        {
+          posts.map((post) => (
+            <li class="post-list__item">
+              <a class="post-list__title" href={`/blogs/${post.id}/`}>
+                {post.data.title}
+              </a>
+              <p class="post-meta">
+                {post.data.pubDate.toLocaleDateString('en-US', {
+                  year: 'numeric',
+                  month: 'long',
+                  day: 'numeric',
+                })}
+              </p>
+              <p>{post.data.description}</p>
+            </li>
+          ))
+        }
+      </ul>
     </main>
   </div>
 </BaseLayout>

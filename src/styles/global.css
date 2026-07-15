@@ -224,6 +224,36 @@ li strong {
   color: var(--color-link);
 }
 
+.post-meta {
+  font-size: 0.875rem;
+  color: var(--color-text-subtle);
+  margin-bottom: 1rem;
+}
+
+.post-list {
+  list-style: none;
+  padding: 0;
+}
+
+.post-list__item {
+  padding: 1.25rem 0;
+  border-bottom: 1px solid var(--color-border);
+}
+
+.post-list__item:first-child {
+  padding-top: 0;
+}
+
+.post-list__title {
+  font-size: 1.125rem;
+  font-weight: 600;
+  color: var(--color-text);
+}
+
+.post-list__title:hover {
+  color: var(--color-link-hover);
+}
+
 @media (max-width: 640px) {
   .page-layout {
     flex-direction: column;
