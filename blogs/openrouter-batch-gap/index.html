@@ -1,0 +1,87 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><link rel="icon" type="image/svg+xml" href="/images/favicon/favicon.svg"><link rel="icon" type="image/png" sizes="96x96" href="/images/favicon/favicon-96x96.png"><link rel="shortcut icon" href="/images/favicon/favicon.ico"><link rel="apple-touch-icon" sizes="180x180" href="/images/favicon/apple-touch-icon.png"><link rel="manifest" href="/images/favicon/site.webmanifest"><link rel="canonical" href="https://t0mclaudio.github.io/blogs/openrouter-batch-gap/"><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet"><title>The One Thing OpenRouter Is Missing That Keeps Me on Three Providers | Tom Claudio - Software &amp; AI Engineer</title><meta name="description" content="OpenRouter promises a single API for all your LLM calls. Here is the one gap that makes that impossible in production."><meta property="og:title" content="The One Thing OpenRouter Is Missing That Keeps Me on Three Providers | Tom Claudio - Software &amp; AI Engineer"><meta property="og:description" content="OpenRouter promises a single API for all your LLM calls. Here is the one gap that makes that impossible in production."><meta property="og:type" content="website"><meta property="og:url" content="https://t0mclaudio.github.io/blogs/openrouter-batch-gap/"><meta property="og:image" content="https://t0mclaudio.github.io/images/blog/openrouter-batch-gap-og.jpg"><meta name="twitter:card" content="summary_large_image"><meta name="twitter:title" content="The One Thing OpenRouter Is Missing That Keeps Me on Three Providers | Tom Claudio - Software &amp; AI Engineer"><meta name="twitter:description" content="OpenRouter promises a single API for all your LLM calls. Here is the one gap that makes that impossible in production."><meta name="twitter:image" content="https://t0mclaudio.github.io/images/blog/openrouter-batch-gap-og.jpg"><link rel="stylesheet" href="/_astro/BaseLayout.CCWQ9dox.css"></head><body><header class="site-header"><nav class="site-nav"><a href="/">Home</a><a href="/blogs/">Blogs</a><a href="/works/">Works</a></nav></header><div class="page-layout"><aside class="author-sidebar"><div class="author-sidebar__avatar"><img src="/images/profile_photo.jpg" alt="Tom Claudio"></div><p class="author-sidebar__name"><strong>Tom Claudio</strong></p><p class="author-sidebar__bio">Software/AI Engineer and Technical Founder. 16 years shipping products. Computer Science and Masters in Entrepreneurship. Open for short contracts.</p><ul class="author-sidebar__links"><li><a href="https://github.com/t0mclaudio">GitHub</a></li><li><a href="mailto:dev.tomclaudio@gmail.com">Email</a></li><li><a href="https://www.linkedin.com/in/tomclaudio/">LinkedIn</a></li></ul></aside><main class="page-content"><h1>The One Thing OpenRouter Is Missing That Keeps Me on Three Providers</h1><p class="post-meta">July 16, 2026</p><img class="post-banner" src="/images/blog/openrouter-batch-gap-banner.webp" alt="The One Thing OpenRouter Is Missing That Keeps Me on Three Providers" width="1600" height="837"><h2 id="the-promise">The Promise</h2>
+<p>OpenRouter pitches itself as the last API integration you ever need to write. One endpoint, one API key, one bill, and access to hundreds of models from Anthropic, Together, Mistral, and more. For anyone managing a multi-provider AI stack, that is a genuinely attractive offer.</p>
+<p>I evaluated it seriously. The conclusion was that it almost works.</p>
+<h2 id="router-vs-abstraction-layer">Router vs Abstraction Layer</h2>
+<p>Before getting into what is missing, it is worth defining two terms that get used interchangeably but mean very different things.</p>
+<p>A <strong>router</strong> is a single gateway that sits between your system and multiple LLM providers. You connect to the router, the router connects to Anthropic, Together, OpenAI, and whoever else. One API key. One billing relationship. The router manages everything behind it.</p>
+<p>An <strong>abstraction layer</strong> is a different animal. Tools like LiteLLM give you a unified code interface, but you still maintain direct connections to each provider. You still hold separate API keys for Anthropic, Together, and OpenAI. LiteLLM simplifies what you write, but it does not centralize your billing or your vendor relationships. You are still managing three accounts. You are just writing less code to talk to them.</p>
+<p>OpenRouter is a router. LiteLLM is an abstraction layer. The distinction matters because they solve different problems, and they have different failure modes.</p>
+<h2 id="what-openrouter-does-well">What OpenRouter Does Well</h2>
+<p>OpenRouter’s coverage is real. It exposes an OpenAI-compatible endpoint at <code>/api/v1/chat/completions</code>, which means any code already written for the OpenAI SDK can reach hundreds of models with a base URL change. No new SDK. No new request format.</p>
+<p>It also offers a BYOK (bring your own key) mode where you supply your own provider keys, and OpenRouter charges nothing on the first one million requests per month. Beyond that threshold, it takes a 5% cut. At the volume I am running, roughly 6,000 products per month, BYOK is effectively free.</p>
+<p>The reliability numbers are reasonable. OpenRouter has measured 99.99% uptime over recent 90-day windows, though there have been three outages in the past eight months running 35 to 50 minutes each. There is no published SLA.</p>
+<h2 id="the-gap">The Gap</h2>
+<p>OpenRouter does not support a Batch API. It is explicitly listed as an unsupported operation. This is not a documentation oversight. It is a structural limitation of how OpenRouter works. It normalizes requests across providers using a real-time chat completions interface. There is no asynchronous job endpoint. There is no way to submit a batch and wait.</p>
+<p>This matters because Anthropic’s Message Batches API gives you 50% off all Claude pricing for requests that can wait up to 24 hours. For a document processing pipeline where latency is not a constraint, that discount is real money.</p>
+<p>The savings also stack. Batch requests are eligible for prompt caching, and the cache discount stacks with the 50% batch discount. Combined with cache hit pricing of 10% of base input tokens, the effective input price for cached prefixes can fall to roughly 5% of the standard rate. Routing the same traffic through OpenRouter forfeits all of that.</p>
+<h2 id="what-it-costs-in-production">What It Costs in Production</h2>
+<p>My pipeline has two passes per product. Pass 1 converts a PDF to markdown using Claude Sonnet 4.6. Pass 2 converts that markdown to structured JSON using Qwen3.6-plus via Together. The numbers below come from real production data across 227 processed products.</p>
+<p><strong>Per-product cost</strong></p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>Pass 1 (Claude)</th>
+<th>Pass 2 (Qwen)</th>
+<th>Total</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Current: Anthropic Batch + Together direct</td>
+<td>$0.0327</td>
+<td>$0.0189</td>
+<td>$0.0516</td>
+</tr>
+<tr>
+<td>OpenRouter BYOK</td>
+<td>$0.0654</td>
+<td>$0.0189</td>
+<td>$0.0843</td>
+</tr>
+<tr>
+<td>OpenRouter pay-as-you-go</td>
+<td>$0.0690</td>
+<td>$0.0199</td>
+<td>$0.0889</td>
+</tr>
+</tbody>
+</table>
+<p>Pass 2 barely moves. Qwen on Together was already running synchronously, so OpenRouter changes nothing there. Pass 1 doubles because there is no batch endpoint to route it through.</p>
+<p><strong>Monthly cost at 200 products per day</strong></p>
+<table>
+<thead>
+<tr>
+<th>Scenario</th>
+<th>Monthly cost</th>
+<th>vs. current</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Current (Anthropic Batch + Together)</td>
+<td>$309</td>
+<td>—</td>
+</tr>
+<tr>
+<td>OpenRouter BYOK</td>
+<td>$506</td>
+<td>+$196/mo (+63%)</td>
+</tr>
+<tr>
+<td>OpenRouter pay-as-you-go</td>
+<td>$533</td>
+<td>+$224/mo (+72%)</td>
+</tr>
+</tbody>
+</table>
+<p>At current volume, moving entirely to OpenRouter costs an extra $2,350 to $2,700 per year. Every dollar of that increase comes from one place: losing the batch discount on Pass 1.</p>
+<h2 id="the-decision">The Decision</h2>
+<p>A full migration to OpenRouter is not the right call. The Anthropic Batch API is doing real work in the current setup, and OpenRouter has no equivalent.</p>
+<p>The more useful framing is to treat OpenRouter as the right tool for synchronous, non-batch traffic, while leaving batch processing on direct Anthropic. This is what a partial pilot would look like: route Pass 2 (Qwen), the legacy extractor, and the content services through OpenRouter via BYOK, and leave the batch extractor untouched. At under 1M requests per month, the BYOK tier costs nothing on top of what is already being paid to the underlying providers.</p>
+<p>That is an operational simplification, not a cost win. One fewer API key to manage, one fewer billing dashboard to check for part of the stack. Whether that is worth the migration effort depends on how much the vendor sprawl is actually bothering you.</p>
+<p>For now, three providers it is.</p>
+<p><img src="/images/blog/openrouter-batch-gap-diagram.webp" alt="Current setup with two direct paths versus a proposed hybrid setup that keeps the batch path direct to Anthropic while routing everything else through OpenRouter"></p>
+<hr>
+<p><em>Tom Claudio is a Software Engineer, AI Engineer, and Technical Founder with 16 years of experience building systems. He writes about architecture decisions, infrastructure trade-offs, and the practical realities of shipping AI products at <a href="https://t0mclaudio.github.io">t0mclaudio.github.io</a>.</em></p>
+</main></div></body></html>
