@@ -10,7 +10,7 @@
     "build": "astro build",
     "preview": "astro preview",
     "astro": "astro",
-    "deploy": "astro build && gh-pages -d dist"
+    "deploy": "astro build && gh-pages -d dist --nojekyll"
   },
   "dependencies": {
     "@astrojs/sitemap": "^3.7.3",
