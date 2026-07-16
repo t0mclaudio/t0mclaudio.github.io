@@ -1,5 +1,5 @@
-/* build: 2026-07-16 */
 :root {
+  --build-version: "2026-07-16";
   color-scheme: light dark;
 
   /* Backgrounds */
