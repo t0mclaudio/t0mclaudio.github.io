@@ -124,6 +124,25 @@ li strong {
   font-weight: 600;
 }
 
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 1.5rem;
+  font-size: 0.9375rem;
+}
+
+th,
+td {
+  border: 1px dotted var(--color-border);
+  padding: 0.5rem 0.75rem;
+  text-align: left;
+}
+
+th {
+  font-weight: 600;
+  color: var(--color-text-muted);
+}
+
 .metric-blue strong {
   color: var(--color-blue);
 }
@@ -236,6 +255,14 @@ li strong {
   border-radius: 8px;
   margin-bottom: 1.5rem;
   display: block;
+}
+
+.page-content p img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 8px;
+  display: block;
+  margin: 1.5rem 0;
 }
 
 .post-list {
