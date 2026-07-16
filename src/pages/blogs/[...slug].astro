@@ -21,12 +21,19 @@ const formattedDate = post.data.pubDate.toLocaleDateString('en-US', {
 });
 ---
 
-<BaseLayout title={post.data.title} description={post.data.description}>
+<BaseLayout
+  title={post.data.title}
+  description={post.data.description}
+  image={post.data.ogImage ?? post.data.heroImage}
+>
   <div class="page-layout">
     <AuthorSidebar />
     <main class="page-content">
       <h1>{post.data.title}</h1>
       <p class="post-meta">{formattedDate}</p>
+      {post.data.heroImage && (
+        <img class="post-banner" src={post.data.heroImage} alt={post.data.title} width="1600" height="837" />
+      )}
       <Content />
     </main>
   </div>

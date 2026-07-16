@@ -8,6 +8,9 @@ const blog = defineCollection({
     description: z.string(),
     pubDate: z.coerce.date(),
     author: z.string().default('Tom Claudio'),
+    heroImage: z.string().optional(),
+    heroImageThumb: z.string().optional(),
+    ogImage: z.string().optional(),
   }),
 });
 

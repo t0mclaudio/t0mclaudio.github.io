@@ -17,17 +17,31 @@ const posts = (await getCollection('blog')).sort(
         {
           posts.map((post) => (
             <li class="post-list__item">
-              <a class="post-list__title" href={`/blogs/${post.id}/`}>
-                {post.data.title}
+              <a href={`/blogs/${post.id}/`} class="post-list__thumb-link">
+                {post.data.heroImageThumb && (
+                  <img
+                    class="post-list__thumb"
+                    src={post.data.heroImageThumb}
+                    alt={post.data.title}
+                    width="640"
+                    height="335"
+                    loading="lazy"
+                  />
+                )}
               </a>
-              <p class="post-meta">
-                {post.data.pubDate.toLocaleDateString('en-US', {
-                  year: 'numeric',
-                  month: 'long',
-                  day: 'numeric',
-                })}
-              </p>
-              <p>{post.data.description}</p>
+              <div class="post-list__body">
+                <a class="post-list__title" href={`/blogs/${post.id}/`}>
+                  {post.data.title}
+                </a>
+                <p class="post-meta">
+                  {post.data.pubDate.toLocaleDateString('en-US', {
+                    year: 'numeric',
+                    month: 'long',
+                    day: 'numeric',
+                  })}
+                </p>
+                <p>{post.data.description}</p>
+              </div>
             </li>
           ))
         }

@@ -1,7 +1,10 @@
 ---
-title: "Building the Pipeline That Reads What Humans Stopped Reading"
+title: "100 hours to 15 minutes: The technical decisions behind the pipeline"
 description: "The technical companion: architecture, model choices, and trade-offs behind the Etours Labs AI data pipeline."
 pubDate: 2026-07-09
+heroImage: "/images/blog/etours-ai-normalization-technical-banner.webp"
+heroImageThumb: "/images/blog/etours-ai-normalization-technical-thumb.webp"
+ogImage: "/images/blog/etours-ai-normalization-technical-og.jpg"
 ---
 
 *By Tom Claudio, Co-founder, Etours Labs*

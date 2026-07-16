@@ -2,11 +2,14 @@
 title: "How We Replaced 100 Hours of Manual Work with a 15-Minute AI Pipeline"
 description: "How Etours Labs replaced 100 hours of manual supplier-data extraction with a 15-minute AI pipeline using Claude and Qwen."
 pubDate: 2026-07-08
+heroImage: "/images/blog/etours-ai-normalization-case-study-banner.webp"
+heroImageThumb: "/images/blog/etours-ai-normalization-case-study-thumb.webp"
+ogImage: "/images/blog/etours-ai-normalization-case-study-og.jpg"
 ---
 
 *By Tom Claudio, Co-founder, Etours Labs*
 
-*This is the business case study. For the architecture, model choices, and trade-offs behind the pipeline, see the technical companion: [Building the Pipeline That Reads What Humans Stopped Reading](/blogs/etours-ai-normalization-technical/).*
+*This is the business case study. For the architecture, model choices, and trade-offs behind the pipeline, see the technical companion: [100 hours to 15 minutes: The technical decisions behind the pipeline](/blogs/etours-ai-normalization-technical/).*
 
 Filipinos love to travel abroad. Not just love — they prefer it. International trips feel like better value for money compared to domestic ones, and the numbers back that up. In 2025, Filipino outbound departures hit 10.2 million trips, up from just 1.5 million in 2020. By 2030, that number is forecast to reach 16.2 million (Euromonitor International, 2025).
 
@@ -86,4 +89,4 @@ On the business side, the smarter move would have been to negotiate data access 
 
 Euromonitor International. (2025). *Tourism flows in the Philippines*. Passport.
 
-*The live output of this pipeline is at etours.ph/international-tours. For the engineering details behind it, read the technical companion: [Building the Pipeline That Reads What Humans Stopped Reading](/blogs/etours-ai-normalization-technical/). Tom Claudio is a Software Engineer, AI Engineer, and Technical Founder with 16 years of experience. He is the co-founder of Etours Labs and available for short-term contracts. See his work at t0mclaudio.github.io.*
+*The live output of this pipeline is at etours.ph/international-tours. For the engineering details behind it, read the technical companion: [100 hours to 15 minutes: The technical decisions behind the pipeline](/blogs/etours-ai-normalization-technical/). Tom Claudio is a Software Engineer, AI Engineer, and Technical Founder with 16 years of experience. He is the co-founder of Etours Labs and available for short-term contracts. See his work at t0mclaudio.github.io.*
