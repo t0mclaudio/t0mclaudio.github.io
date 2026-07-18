@@ -17,4 +17,5 @@ export const NAV_LINKS = [
   { title: "Blogs", url: "/blogs/" },
   { title: "Works", url: "/works/" },
   { title: "Education", url: "/education/" },
+  { title: "About", url: "/about/" },
 ];

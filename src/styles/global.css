@@ -160,10 +160,6 @@ th {
   color: var(--color-green);
 }
 
-.site-header {
-  border-bottom: 1px solid var(--color-border);
-}
-
 .site-nav {
   max-width: var(--max-width);
   margin: 0 auto;
@@ -171,7 +167,6 @@ th {
   display: flex;
   justify-content: flex-end;
   gap: 1.5rem;
-  border-bottom: 1px solid var(--color-border);
   background-color: var(--color-bg);
 }
 
@@ -246,9 +241,11 @@ th {
 }
 
 .author-sidebar__links li:not(:last-child)::after {
-  content: "|";
+  content: "•";
   margin-left: 0.4rem;
   color: var(--color-text-subtle);
+  font-size: 0.6rem;
+  opacity: 0.6;
 }
 
 .author-sidebar__links a {
