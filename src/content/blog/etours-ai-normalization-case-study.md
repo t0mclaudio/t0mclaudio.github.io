@@ -7,9 +7,9 @@ heroImageThumb: "/images/blog/etours-ai-normalization-case-study-thumb.webp"
 ogImage: "/images/blog/etours-ai-normalization-case-study-og.jpg"
 ---
 
-*By Tom Claudio, Co-founder, Etours Labs*
+_By Tom Claudio, Co-founder, Etours Labs_
 
-*This is the business case study. For the architecture, model choices, and trade-offs behind the pipeline, see the technical companion: [100 hours to 15 minutes: The technical decisions behind the pipeline](/blogs/etours-ai-normalization-technical/).*
+_This is the business case study. For the architecture, model choices, and trade-offs behind the pipeline, see the technical companion: [100 hours to 15 minutes: The technical decisions behind the pipeline](/blogs/etours-ai-normalization-technical/)._
 
 Filipinos love to travel abroad. Not just love — they prefer it. International trips feel like better value for money compared to domestic ones, and the numbers back that up. In 2025, Filipino outbound departures hit 10.2 million trips, up from just 1.5 million in 2020. By 2030, that number is forecast to reach 16.2 million (Euromonitor International, 2025).
 
@@ -19,11 +19,11 @@ That growth created a gold rush for travel agents and tour operators. New wholes
 
 UOS Travel is one of the biggest wholesalers operating in the Philippines, with a concentration of products across East Asia. For travel agents like Etours, UOS is a key supplier. What they offer, we sell.
 
-But here is how UOS shared their products with us. PDF flyers. JPEG images. A Google Sheet for schedules that was designed to look good but was not built to be read by software. No API. No structured data feed. Just files in a shared Google Drive that changed every single day.
+But here is how UOS shared their products with us. PDF flyers. JPEG images. A spreadsheet for schedules not built to be read by software. No API. No structured data feed. Just files in their proprietary platform that gets updated every day.
 
-New products got added. Slots sold out, sometimes within minutes. Prices changed. The only way to know what was current was to open the drive, cross-reference the spreadsheet, and read through each PDF one by one. At peak, that meant navigating over 1,000 rows of schedules alongside 200 or more product files.
+New products got added. Slots sold out, sometimes within minutes. Prices changed. The only way to know what was current was to check the platform, cross-reference the spreadsheet, and read through each PDF one by one. At peak, that meant navigating over 1,000 rows of schedules alongside 200 or more product files.
 
-Every day, a staff member would sit down and manually extract product information from those files, copy it into a Google Doc, and try to get it ready to sell. We timed it. One product took 30 minutes to extract and organize. At 200 products, that is 6,000 minutes, or roughly 100 hours of work before a single product could be listed.
+Every day, a staff member would sit down and manually extract product information from those files and prepare it to sell. We timed it. One product took 30 minutes to extract and organize. At 200 products, that is 6,000 minutes, or roughly 100 hours of work before a single product was ready.
 
 With an average of 8 new products arriving from the supplier every day, the math was brutal. By the time staff finished extracting yesterday's batch, today's products were already selling out. The extraction work and the selling window were in direct competition, and extraction was always losing.
 
@@ -35,19 +35,19 @@ The files were built for human eyes, not machines.
 
 Each flyer was a designed artifact. Branded layouts, product information embedded in images, no consistent structure across files. Standard text extraction libraries could not parse them reliably because there was nothing reliable to parse. Every supplier, sometimes every product, had a different visual layout.
 
-The spreadsheet was worse in a different way. It looked structured but was not built to be consumed by software. Column headers shifted. Merged cells broke parsing. There was no schema.
+Spreadsheets can be worse in a different way. It looked structured but was not built to be consumed by software. Column headers shifted. Merged cells broke parsing. There was no schema.
 
 We also discovered conflicts in the data. Information in a PDF sometimes contradicted the spreadsheet. Old flyers with outdated details stayed in the drive. There was no single source of truth.
 
 And once we decided to build an automated solution, a new difficulty appeared. Testing and refining the AI extraction to get consistently correct output took longer than building the pipeline itself. Getting from "it works in testing" to "it works reliably in production" was a bigger gap than expected. A model version update could silently break output formatting. Small inconsistencies in supplier files that looked minor to a human caused failures downstream.
 
-The real engineering work in an AI system turned out to be the evaluation, not the code.
+The real engineering work in an AI system turned out to be the _evaluation_, not the code.
 
 ## What We Built
 
 We built an automated pipeline that takes unstructured supplier files and turns them into clean, structured product data ready to publish on the website.
 
-The pipeline does four things. It retrieves PDFs and flyers from the supplier's Google Drive or scrapes directly from their portal. It extracts product information from image-heavy files using AI vision. It normalizes the extracted data into a consistent structured format. Then it runs on a schedule, every day, without anyone pressing a button.
+The pipeline does four things. It retrieves PDFs and flyers from the supplier's Google Drive or scrapes directly from their portal. It extracts product information from image-heavy files using AI vision. It normalizes the extracted data into a consistent structured format, which lets us sell the products across different channels. Then it runs on a schedule, every day, without anyone pressing a button.
 
 The first full run processed the entire existing catalog. After that, only new or updated files get processed, keeping things current without reprocessing everything each time.
 
@@ -67,7 +67,7 @@ Staff are no longer extracting data. They are selling. The catalog is live and c
 
 ## What We Learned
 
-**Eval is the actual work.** Building the pipeline took days. Getting the output to production quality took weeks. Most of that time was prompt refinement, not code. This was the first AI feature I shipped to production beyond a proof of concept, and the distance between those two things was larger than I expected.
+**Eval is the actual work.** Building the pipeline took days. Getting the output to production quality took longer. Most of that time was prompt refinement, not code. This was the first AI feature I shipped to production beyond a proof of concept, and the distance between those two things was larger than I expected.
 
 **AI output is probabilistic. Your system cannot be.** Even after extensive refinement, output was still inconsistent at times. The answer was not to keep chasing perfect extraction. It was to add validation layers that caught low-confidence output and escalated it to a human. Human-in-the-loop is not a fallback for a broken system. It is a design decision for a responsible one.
 
@@ -87,6 +87,6 @@ On the business side, the smarter move would have been to negotiate data access 
 
 ## Reference
 
-Euromonitor International. (2025). *Tourism flows in the Philippines*. Passport.
+Euromonitor International. (2025). _Tourism flows in the Philippines_. Passport.
 
-*The live output of this pipeline is at etours.ph/international-tours. For the engineering details behind it, read the technical companion: [100 hours to 15 minutes: The technical decisions behind the pipeline](/blogs/etours-ai-normalization-technical/). Tom Claudio is a Software Engineer, AI Engineer, and Technical Founder with 16 years of experience. He is the co-founder of Etours Labs and available for short-term contracts. See his work at t0mclaudio.github.io.*
+_The live output of this pipeline is at etours.ph/international-tours. For the engineering details behind it, read the technical companion: [100 hours to 15 minutes: The technical decisions behind the pipeline](/blogs/etours-ai-normalization-technical/). Tom Claudio is a Software Engineer, AI Engineer, and Technical Founder with 16 years of experience. He is the co-founder of Etours Labs and available for short-term contracts. See his work at t0mclaudio.github.io._
